@@ -4,58 +4,79 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>당직월력 정책 안내</title>
-  <style>
-    :root { color-scheme: light; --ink:#221d16; --muted:#6d6557; --line:#e5d8c4; --bg:#f8f1e6; --card:#fffdf8; --navy:#2f4bb8; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; color:var(--ink); background:var(--bg); line-height:1.65; }
-    main { width:min(920px, calc(100% - 32px)); margin:0 auto; padding:44px 0 56px; }
-    h1 { margin:0 0 10px; font-size:30px; line-height:1.2; }
-    p { margin:0 0 14px; }
-    a { color:var(--navy); text-decoration:none; font-weight:700; }
-    a:hover { text-decoration:underline; }
-    .lead { color:var(--muted); max-width:720px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:26px; }
-    .card { display:block; min-height:150px; padding:20px; border:1px solid var(--line); border-radius:16px; background:var(--card); box-shadow:0 8px 24px -18px rgba(50,35,15,.35); }
-    .card h2 { margin:0 0 8px; font-size:18px; }
-    .card p { color:var(--muted); font-size:14px; }
-    footer { margin-top:34px; color:var(--muted); font-size:13px; }
-  </style>
+  <link rel="stylesheet" href="./policy.css">
 </head>
 <body>
-  <main>
-    <h1>당직월력 정책 안내</h1>
-    <p class="lead">당직월력 Google Play 조직 개발자 계정 게시와 앱 이용을 위해 공개하는 개인정보, 계정 삭제, 서비스 이용, 데이터 보안 안내입니다. 실제 게시 전 `[조직 법적 이름]`, `[Google Play 개발자 이름]`, `[조직 앱 지원 이메일]`, `[조직 앱 지원 전화번호]` 등 자리표시자를 조직 계정 정보로 교체하세요.</p>
+  <div class="readbar-track"><div id="readbar"></div></div>
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="./index.html">
+        <span class="logo">📅</span>
+        <span class="name"><b>당직월력</b> 정책 안내</span>
+      </a>
+      <a class="home" href="./guide.dc.html">사용설명서</a>
+    </div>
+  </header>
 
-    <section class="grid" aria-label="정책 문서">
-      <a class="card" href="./guide.html">
-        <h2>📖 사용설명서</h2>
+  <main>
+    <div style="display:flex; align-items:center; gap:13px; margin-bottom:18px;">
+      <div style="width:52px; height:52px; border-radius:15px; background:var(--navy); color:#fff; display:grid; place-items:center; font-size:27px; box-shadow:0 14px 28px -14px rgba(47,75,184,.7);">📅</div>
+      <div>
+        <div style="font-weight:800; font-size:15px;">당직월력</div>
+        <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; color:var(--ink-3); font-weight:700;">DUTY CALENDAR · POLICY</div>
+      </div>
+    </div>
+
+    <h1>당직월력 정책 안내</h1>
+    <p>당직월력 Google Play 조직 개발자 계정 게시와 앱 이용을 위해 공개하는 개인정보, 계정 삭제, 서비스 이용, 데이터 보안 안내입니다. 실제 게시 전 <code style="font-family:var(--mono); font-size:.92em; background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:1px 6px;">[조직 법적 이름]</code>, <code style="font-family:var(--mono); font-size:.92em; background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:1px 6px;">[Google Play 개발자 이름]</code>, <code style="font-family:var(--mono); font-size:.92em; background:var(--surface-2); border:1px solid var(--line); border-radius:6px; padding:1px 6px;">[조직 앱 지원 이메일]</code> 등 자리표시자를 조직 계정 정보로 교체하세요.</p>
+
+    <div class="card-grid">
+      <a class="card" href="./guide.dc.html">
+        <div class="ico">📖</div>
+        <h2>사용설명서</h2>
         <p>로그인부터 월력표, 요청, 나무키우기, 그룹장 관리까지 메뉴별 화면과 사용법을 그림과 함께 안내합니다.</p>
       </a>
       <a class="card" href="./privacy-policy.html">
+        <div class="ico">🔒</div>
         <h2>개인정보처리방침</h2>
-        <p>앱이 수집, 이용, 보관, 공유하는 데이터와 광고, 푸시, 보상 처리 기준입니다.</p>
+        <p>앱이 수집·이용·보관·공유하는 데이터와 광고, 푸시, 보상 처리 기준입니다.</p>
       </a>
       <a class="card" href="./account-deletion.html">
+        <div class="ico">🗑️</div>
         <h2>계정 및 데이터 삭제 안내</h2>
         <p>앱 안과 웹에서 계정 삭제를 요청하는 방법, 삭제되는 데이터와 유지될 수 있는 데이터를 안내합니다.</p>
       </a>
       <a class="card" href="./terms-and-rewards.html">
+        <div class="ico">📜</div>
         <h2>서비스 이용약관 및 보상 유의사항</h2>
         <p>근무표 편성 보조 도구로서의 한계, 민감정보 입력 금지, 광고와 기프트콘 보상 기준입니다.</p>
       </a>
       <a class="card" href="./play-console-data-safety.html">
+        <div class="ico">🛡️</div>
         <h2>Play Console 데이터 보안 답변표</h2>
-        <p>Google Play 데이터 보안 양식에 입력할 수집, 공유, 목적, 삭제 요청 답변 초안입니다.</p>
+        <p>Google Play 데이터 보안 양식에 입력할 수집·공유·목적·삭제 요청 답변 초안입니다.</p>
       </a>
       <a class="card" href="./review-access.html">
+        <div class="ico">🔑</div>
         <h2>검토용 앱 액세스 안내</h2>
         <p>Google Play 심사자가 로그인과 주요 기능을 확인할 때 참고할 테스트 접근 안내입니다.</p>
       </a>
-    </section>
-
-    <footer>
-      최종 업데이트: 2026-06-25. 이 문서는 운영자 정보와 실제 제휴 계약 조건 확인 후 게시해야 하는 제출용 초안입니다.
-    </footer>
+    </div>
   </main>
+
+  <footer class="site-foot">
+    <div class="links">
+      <a href="./guide.dc.html">사용설명서</a>
+      <a href="./privacy-policy.html">개인정보처리방침</a>
+      <a href="./account-deletion.html">계정 및 데이터 삭제</a>
+      <a href="./terms-and-rewards.html">이용약관 및 보상</a>
+      <a href="./play-console-data-safety.html">데이터 보안 답변표</a>
+      <a href="./review-access.html">검토용 액세스</a>
+    </div>
+    <div class="mono">DUTY CALENDAR · POLICY</div>
+    <div style="margin-top:6px;">최종 업데이트: 2026-06-25. 이 문서는 운영자 정보와 실제 제휴 계약 조건 확인 후 게시해야 하는 제출용 초안입니다.</div>
+  </footer>
+  <button id="backtop" aria-label="맨 위로">↑</button>
+  <script src="./policy.js"></script>
 </body>
 </html>

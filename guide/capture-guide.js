@@ -1,5 +1,5 @@
 /**
- * 사용설명서(docs/guide.html)용 메뉴별 스크린샷을 실제 앱에서 자동 캡처한다.
+ * 사용설명서(docs/guide.dc.html)용 메뉴별 스크린샷을 실제 앱에서 자동 캡처한다.
  * store-assets/.../captioned/capture-screens.js 의 캡처 파이프라인을 각색한 것:
  *   · 루트 index.html 을 헤드리스 브라우저로 띄우고
  *   · Supabase 요청 abort + navigator.onLine=false 로 강제 오프라인 → 로컬 시드 상태만 렌더
