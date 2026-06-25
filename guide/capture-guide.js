@@ -218,6 +218,29 @@ const SHOTS = [
     name: "41-tree-inventory",
     setup: (tree) => { treeGameState = tree; treeActiveMenu = "inventory"; activateView("tree"); renderTree(true); },
   },
+  {
+    // 첫 접속 기프티콘 선택 게이트 — harvest_count:0 + first_gift_code:"" + giftOptions 존재 시 렌더
+    name: "42-tree-first-gift",
+    setup: () => {
+      treeGameState = {
+        tree: {
+          level: 1, exp: 0, gauge: 0, water: 5, fertilizer: 3,
+          harvest_ready: false, harvest_count: 0, first_gift_code: "",
+          missions: { attendance: false, water_use_reward: 0, water_reward_step: 0, fertilizer_use_reward: 0, fertilizer_reward_step: 0 },
+          ads: { rewarded45: { watchedToday: 0, nextAvailableAt: null }, water5: { watchedToday: 0, nextAvailableAt: null }, fertilizer5: { watchedToday: 0, nextAvailableAt: null } },
+          rewards: [],
+        },
+        giftOptions: [
+          { code: "GIFT-AMERICANO", name: "아메리카노 T", brand: "카페 데모", image: "" },
+          { code: "GIFT-CU3000", name: "편의점 3,000원권", brand: "데모마트", image: "" },
+          { code: "GIFT-BAKERY5000", name: "베이커리 5,000원권", brand: "데모베이커리", image: "" },
+        ],
+      };
+      treeActiveMenu = "garden";
+      activateView("tree");
+      renderTree(true);
+    },
+  },
 
   // ── Part B. 그룹장 전용 ──
   {
