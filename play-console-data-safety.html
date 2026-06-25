@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>당직월력 Play Console 데이터 보안 답변표</title>
+  <link rel="stylesheet" href="./policy.css">
+</head>
+<body>
+  <main>
+    <p class="crumb"><a href="./index.html">정책 안내</a></p>
+    <h1>Play Console 데이터 보안 답변표</h1>
+    <p class="meta">작성 기준일: 2026-06-25</p>
+    <p>이 표는 Google Play Console 데이터 보안 양식에 입력하기 위한 제출 초안입니다. 실제 출시 전 AdMob 운영 ID, 센드비 계약, Supabase 배포 상태를 확인하고 최종 제출하세요.</p>
+
+    <section>
+      <h2>공통 답변</h2>
+      <table>
+        <tbody>
+          <tr><th>앱이 사용자 데이터를 수집하거나 공유하나요?</th><td>예</td></tr>
+          <tr><th>수집되는 모든 사용자 데이터가 전송 중 암호화되나요?</th><td>예, HTTPS 기반 통신을 사용합니다.</td></tr>
+          <tr><th>사용자가 데이터 삭제를 요청할 수 있나요?</th><td>예, 앱 내 회원 탈퇴와 웹 삭제 요청 안내를 제공합니다.</td></tr>
+          <tr><th>아동 대상 앱인가요?</th><td>아니요. 성인 및 업무용 교대근무 팀 대상입니다.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>데이터 유형별 답변</h2>
+      <table>
+        <thead><tr><th>Google Play 데이터 유형</th><th>수집/공유</th><th>필수 여부</th><th>목적</th></tr></thead>
+        <tbody>
+          <tr><td>개인 정보 - 이메일 주소</td><td>수집. Supabase Auth가 서비스 제공업체로 처리</td><td>이메일 로그인 및 나무/보상 기능 사용 시 필수</td><td>앱 기능, 계정 관리, 개발자 커뮤니케이션</td></tr>
+          <tr><td>개인 정보 - 이름</td><td>수집</td><td>그룹 가입과 당직표 표시 시 필수</td><td>앱 기능, 계정 관리</td></tr>
+          <tr><td>개인 정보 - 사용자 ID</td><td>수집</td><td>이메일 계정 사용 시 필수</td><td>앱 기능, 계정 관리, 보안</td></tr>
+          <tr><td>앱 활동 - 기타 사용자 제작 콘텐츠</td><td>수집</td><td>근무표/요청/건의를 사용하는 경우 필수</td><td>앱 기능, 계정 관리</td></tr>
+          <tr><td>앱 활동 - 기타 작업</td><td>수집</td><td>나무 성장/광고 보상 기능 사용 시 필수</td><td>앱 기능, 광고 또는 마케팅, 보안</td></tr>
+          <tr><td>기기 또는 기타 ID</td><td>수집 및 광고 SDK 처리. FCM/AdMob 처리 포함</td><td>푸시 알림 또는 광고 기능 사용 시 필요</td><td>앱 기능, 개발자 커뮤니케이션, 광고 또는 마케팅, 보안</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>현재 선택하지 않을 항목</h2>
+      <p>위치, 연락처, 사진 및 동영상, 오디오, 파일 및 문서, 사용자 기기 캘린더, SMS/MMS, 통화 기록, 금융 정보, 건강 및 피트니스 정보는 현재 앱 기능에서 수집하지 않습니다.</p>
+    </section>
+
+    <section>
+      <h2>검토 전 확인</h2>
+      <ul>
+        <li>Google Mobile Ads SDK 최신 데이터 공개 안내와 이 답변표를 대조합니다.</li>
+        <li>센드비 연동에서 휴대폰 번호 또는 수신자 이름을 쓰게 되면 전화번호/이름 공유 항목을 추가합니다.</li>
+        <li>개인정보처리방침과 이 답변표의 수집/공유 항목이 다르지 않은지 확인합니다.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
