@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>당직월력 사용설명서</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink:#221d16; --muted:#625a4d; --line:#e5d8c4; --bg:#f8f1e6;
+      --card:#fffdf8; --note:#f2e5cd; --navy:#2f4bb8; --navy-soft:#e6ebfb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0; background:var(--bg); color:var(--ink); line-height:1.72;
+      font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+    main { width:min(960px, calc(100% - 32px)); margin:0 auto; padding:40px 0 64px; }
+    .brand { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+    .brand .mark {
+      width:46px; height:46px; border-radius:12px; background:var(--navy);
+      color:#fff; display:grid; place-items:center; font-size:24px; flex:none;
+      box-shadow:0 10px 24px -14px rgba(47,75,184,.7);
+    }
+    .brand .name { font-size:15px; font-weight:800; letter-spacing:.02em; }
+    .brand .name small { display:block; font-size:11px; color:var(--muted); font-weight:700; letter-spacing:.16em; }
+    h1 { margin:0 0 10px; font-size:30px; line-height:1.22; letter-spacing:-0.02em; }
+    .lead { color:var(--muted); max-width:760px; margin:0 0 6px; }
+    a { color:var(--navy); font-weight:700; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    .toc { margin:24px 0 8px; padding:18px 20px; background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:0 10px 26px -22px rgba(60,45,20,.42); }
+    .toc h2 { margin:0 0 10px; font-size:15px; color:var(--muted); }
+    .toc ol { margin:0; padding-left:20px; columns:2; column-gap:28px; }
+    .toc li { margin:3px 0; break-inside:avoid; }
+    @media (max-width:640px){ .toc ol { columns:1; } }
+
+    .part-head { margin:38px 0 6px; padding-bottom:8px; border-bottom:2px solid var(--line); }
+    .part-head h2 { margin:0; font-size:22px; }
+    .part-head p { margin:6px 0 0; color:var(--muted); font-size:14px; }
+
+    section.guide {
+      background:var(--card); border:1px solid var(--line); border-radius:16px;
+      padding:22px; margin:18px 0; box-shadow:0 10px 26px -22px rgba(60,45,20,.42);
+      scroll-margin-top:16px;
+    }
+    section.guide > h3 { margin:0 0 6px; font-size:19px; }
+    section.guide > h3 .where { font-size:13px; font-weight:700; color:var(--navy); background:var(--navy-soft); border-radius:999px; padding:2px 10px; margin-left:8px; vertical-align:middle; }
+    section.guide > p { margin:0 0 12px; }
+
+    .step { display:grid; grid-template-columns:270px 1fr; gap:24px; align-items:start; margin-top:10px; }
+    .step + .step { margin-top:22px; padding-top:22px; border-top:1px solid var(--line); }
+    @media (max-width:720px){ .step { grid-template-columns:1fr; gap:14px; } }
+
+    figure.shot { margin:0; }
+    figure.shot img {
+      width:100%; max-width:270px; display:block; border:1px solid var(--line);
+      border-radius:20px; background:#fff; box-shadow:0 14px 30px -20px rgba(40,30,10,.55);
+    }
+    figure.shot figcaption { font-size:12.5px; color:var(--muted); margin-top:8px; text-align:center; max-width:270px; }
+
+    .gallery { display:flex; flex-wrap:wrap; gap:18px; }
+    .gallery figure.shot img { max-width:220px; }
+    .gallery figure.shot figcaption { max-width:220px; }
+
+    .step h4 { margin:2px 0 6px; font-size:15px; }
+    ul, ol { margin:0 0 8px; padding-left:20px; }
+    li { margin:4px 0; }
+    .kbd { font-weight:700; color:var(--ink); }
+    .note {
+      background:var(--note); border:1px solid var(--line); border-radius:12px;
+      padding:11px 14px; color:var(--muted); font-size:14px; margin:12px 0 0;
+    }
+    .note strong { color:var(--ink); }
+
+    .faq dt { font-weight:800; margin-top:12px; }
+    .faq dd { margin:2px 0 0; color:var(--muted); }
+
+    footer { margin-top:40px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+    footer .links { margin-bottom:8px; display:flex; flex-wrap:wrap; gap:14px; }
+    .top { display:inline-block; margin-top:6px; font-size:13px; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <div class="mark">📅</div>
+    <div class="name">당직월력<small>DUTY CALENDAR</small></div>
+  </div>
+
+  <h1>당직월력 사용설명서</h1>
+  <p class="lead">당직월력은 한국군 당직근무를 자동으로 편성·공유하는 앱입니다. 이 안내서는 화면(메뉴)별로 사용법을 그림과 함께 설명합니다.</p>
+  <p class="lead"><strong>Part A</strong>는 모든 사용자(그룹원·그룹장 공통), <strong>Part B</strong>는 그룹장만 보이는 관리 메뉴입니다. 화면 속 이름·이메일·키코드는 모두 가상의 예시입니다.</p>
+
+  <nav class="toc">
+    <h2>목차</h2>
+    <ol>
+      <li><a href="#login">1. 로그인 / 가입</a></li>
+      <li><a href="#dashboard">2. 내 정보 (대시보드)</a></li>
+      <li><a href="#calendar">3. 월력표</a></li>
+      <li><a href="#requests">4. 요청 (변경·제외)</a></li>
+      <li><a href="#tree">5. 나무키우기</a></li>
+      <li><a href="#admin-members">6. (그룹장) 당직근무 인원</a></li>
+      <li><a href="#admin-basis">7. (그룹장) 편성 기준</a></li>
+      <li><a href="#admin-rosters">8. (그룹장) 유형별 순번표</a></li>
+      <li><a href="#admin-holidays">9. (그룹장) 휴일</a></li>
+      <li><a href="#admin-trainings">10. (그룹장) 훈련</a></li>
+      <li><a href="#admin-rules">11. (그룹장) 룰</a></li>
+      <li><a href="#admin-group">12. (그룹장) 그룹 및 앱 설정</a></li>
+    </ol>
+  </nav>
+
+  <!-- ───────────────────────── Part A ───────────────────────── -->
+  <div class="part-head">
+    <h2>Part A · 모든 사용자</h2>
+    <p>그룹원과 그룹장 모두에게 공통으로 보이는 기본 화면입니다.</p>
+  </div>
+
+  <section class="guide" id="login">
+    <h3>1. 로그인 / 가입</h3>
+    <p>앱을 처음 열면 로그인 화면이 나옵니다. 역할에 따라 들어가는 방법이 다릅니다.</p>
+    <div class="gallery">
+      <figure class="shot">
+        <img src="./guide/img/01-login-leader.png" alt="최초 대표 가입 화면">
+        <figcaption>최초 대표 가입 — 그룹을 새로 만드는 그룹장</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="./guide/img/02-login-email.png" alt="그룹원 이메일 로그인 화면">
+        <figcaption>이메일 로그인 — 이미 가입한 그룹원</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="./guide/img/03-login-keycode.png" alt="키코드 가입 화면">
+        <figcaption>키코드 가입 — 새로 합류하는 그룹원</figcaption>
+      </figure>
+    </div>
+    <h4>그룹을 처음 만드는 경우 (그룹장)</h4>
+    <ul>
+      <li><span class="kbd">최초 대표 가입</span> 탭에서 이메일·비밀번호(6자 이상)·이름을 입력하고 <span class="kbd">그룹 만들기</span>를 누릅니다.</li>
+      <li>그룹이 생성되면 <strong>그룹 키코드</strong>가 발급됩니다. 이 키코드를 그룹원에게 알려주면 그룹원이 합류할 수 있습니다.</li>
+    </ul>
+    <h4>그룹에 합류하는 경우 (그룹원)</h4>
+    <ul>
+      <li><span class="kbd">그룹원 로그인 or 가입</span> 탭으로 이동합니다.</li>
+      <li>처음 합류한다면 <span class="kbd">키코드 가입</span>에서 그룹장이 알려준 <strong>키코드 + 본인 이름</strong>으로 신청합니다. 그룹장이 승인하면 사용이 시작됩니다.</li>
+      <li>이미 가입했고 이메일 인증까지 마쳤다면 <span class="kbd">이메일 로그인</span>에서 이메일·비밀번호만으로 들어옵니다. (키코드 불필요)</li>
+    </ul>
+    <div class="note"><strong>이메일 인증을 권장합니다.</strong> 나무키우기 탭에서 이메일 인증을 마치면 기기를 바꿔도 이메일만으로 그룹이 복구되고, 여러 그룹을 옮겨 다닐 수 있습니다.</div>
+  </section>
+
+  <section class="guide" id="dashboard">
+    <h3>2. 내 정보 (대시보드) <span class="where">하단 🏠 내 정보</span></h3>
+    <p>로그인하면 가장 먼저 보이는 개인 요약 화면입니다. 맨 위 카드는 <strong>다음 근무까지 남은 일수(D-day)</strong>와 날짜·근무유형을, 그 아래 3칸은 이번달·다음달·전체 근무 횟수를 보여줍니다. 아래쪽 4개 탭으로 상세 정보를 전환합니다.</p>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/10-dashboard-duties.png" alt="내 근무현황 탭"><figcaption>내 근무현황</figcaption></figure>
+      <div>
+        <h4>내 근무현황</h4>
+        <p>내가 편성된 근무를 날짜순으로 보여줍니다. 각 줄에 날짜·근무유형·역할이 표시되며, 줄을 누르면 그날 함께 근무하는 인원을 볼 수 있습니다. 오른쪽 위 <span class="kbd">변경 요청 ⇄</span>으로 바로 요청 화면으로 갈 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/11-dashboard-rosters.png" alt="내 순번표 탭"><figcaption>내 순번표</figcaption></figure>
+      <div>
+        <h4>내 순번표</h4>
+        <p>내 역할(직책)의 순번표를 읽기 전용으로 보여줍니다. 평일·휴일전·토요일·일요일 등 근무유형별로 내가 몇 번째 순번인지 확인할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/12-dashboard-tokens.png" alt="근무토큰 탭"><figcaption>근무토큰</figcaption></figure>
+      <div>
+        <h4>근무토큰</h4>
+        <p>‘차후 근무변경’으로 주고받은 토큰을 모아 봅니다. 받은 토큰은 내 근무 1건을 골라 <span class="kbd">토큰 사용</span>으로 상대에게 넘길 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/13-dashboard-settings.png" alt="설정 탭"><figcaption>설정</figcaption></figure>
+      <div>
+        <h4>설정</h4>
+        <p>이 기기에서 알림 받기, 로그아웃, 회원 탈퇴를 관리합니다. 이메일 인증 사용자는 <span class="kbd">소속 그룹</span>에서 그룹을 전환하거나 옛 그룹을 나갈 수 있습니다. <strong>로그아웃해도 그룹 데이터는 서버에 그대로 유지</strong>됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="calendar">
+    <h3>3. 월력표 <span class="where">하단 📅 월력표</span></h3>
+    <p>그룹 전체의 당직 편성을 달력으로 봅니다. 상단 좌우 화살표(<span class="kbd">‹ ›</span>)로 달을 넘기고, 오른쪽 위 버튼으로 보기 방식을 바꿉니다. (휴대폰에서는 좌우로 쓸어넘겨도 달이 이동합니다.)</p>
+    <div class="gallery">
+      <figure class="shot"><img src="./guide/img/20-calendar-month.png" alt="월력형 보기"><figcaption>⊞ 월력형 — 한 달을 격자로</figcaption></figure>
+      <figure class="shot"><img src="./guide/img/21-calendar-directory.png" alt="디렉토리형 보기"><figcaption>≡ 디렉토리형 — 날짜별 목록으로</figcaption></figure>
+      <figure class="shot"><img src="./guide/img/22-calendar-popup.png" alt="일자 상세 팝업"><figcaption>날짜를 누르면 상세 팝업</figcaption></figure>
+    </div>
+    <ul>
+      <li>색으로 평일 / 휴일전 / 토·일을 구분합니다. 공휴일은 휴일 색으로 표시됩니다.</li>
+      <li>날짜 칸을 누르면 <strong>그날 근무자 전원과 역할</strong>, 적용된 룰·훈련 정보가 담긴 상세 팝업이 아래에서 올라옵니다. 손잡이를 위로 끌면 팝업이 커집니다.</li>
+    </ul>
+  </section>
+
+  <section class="guide" id="requests">
+    <h3>4. 요청 (변경·제외) <span class="where">하단 ⇄ 요청</span></h3>
+    <p>근무 교환이나 근무 제외를 신청하는 화면입니다. 위쪽 세 개의 탭으로 나뉩니다.</p>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/30-request-swap.png" alt="변경요청 화면"><figcaption>변경요청</figcaption></figure>
+      <div>
+        <h4>변경요청</h4>
+        <ol>
+          <li><strong>내 근무 선택</strong> — 바꾸고 싶은 내 근무를 고릅니다.</li>
+          <li><strong>상대방 선택</strong> — 교환할 상대와 그 사람의 근무를 고릅니다. 지금 맞바꿀 상대가 없으면 <span class="kbd">차후 근무변경 (토큰 발급)</span>을 선택할 수 있습니다.</li>
+          <li><strong>신청</strong> — 사유를 적고 제출합니다. 상대 승낙 → 그룹장 승인 순으로 확정됩니다.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/31-request-exclude.png" alt="제외요청 화면"><figcaption>제외요청</figcaption></figure>
+      <div>
+        <h4>제외요청</h4>
+        <p>파견·육아·교육·질병 등으로 일정 기간 근무에서 빠져야 할 때 사용합니다. <strong>시작일·종료일</strong>과 사유, 상세 내용을 적어 제출하면 그룹장이 승인합니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/32-request-all.png" alt="전체 제외현황 화면"><figcaption>전체 제외현황</figcaption></figure>
+      <div>
+        <h4>전체 제외현황</h4>
+        <p>나와 같은 역할(직책) 인원의 변경·제외 요청을 <strong>읽기 전용</strong>으로 모아 봅니다. 누가 언제 빠지는지 미리 파악할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="tree">
+    <h3>5. 나무키우기 <span class="where">하단 🌳 나무</span></h3>
+    <p>출석·광고 시청·미션으로 물과 비료를 모아 나무를 키우고, 레벨이 오르면 기프티콘 보상을 받는 부가 기능입니다.</p>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/40-tree-garden.png" alt="나무 정원 화면"><figcaption>정원</figcaption></figure>
+      <div>
+        <h4>정원</h4>
+        <ul>
+          <li>가운데 나무와 <strong>레벨·성장률</strong>이 보입니다. 성장 게이지가 차면 레벨이 오릅니다.</li>
+          <li><span class="kbd">물 주기</span> / <span class="kbd">비료 주기</span>로 나무를 성장시키고, 상단의 <strong>45초 광고·물 받기·비료 받기·오늘 미션</strong>으로 자원을 모읍니다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/41-tree-inventory.png" alt="보관함 화면"><figcaption>보관함</figcaption></figure>
+      <div>
+        <h4>보관함</h4>
+        <p>오른쪽 위 <span class="kbd">📦 보관함</span>에서 받은 보상(기프티콘)을 확인하고 교환 대상을 고릅니다. 발급된 쿠폰의 코드도 여기서 볼 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="note"><strong>나무는 이메일 계정에 묶입니다.</strong> 그룹을 옮기거나 나가도 같은 이메일이면 키우던 나무가 그대로 유지됩니다. 자원·미션은 매일 자정(서울 기준) 초기화됩니다.</div>
+  </section>
+
+  <!-- ───────────────────────── Part B ───────────────────────── -->
+  <div class="part-head">
+    <h2>Part B · 그룹장 전용 관리</h2>
+    <p>하단 <span class="kbd">⚙ 설정</span> 탭은 그룹장에게만 보입니다. 그룹원·순번·편성 규칙을 여기서 관리합니다. 변경 사항은 자동 저장되어 모든 그룹원에게 반영됩니다.</p>
+  </div>
+
+  <section class="guide" id="admin-menu">
+    <h3>설정 메뉴 한눈에 보기 <span class="where">하단 ⚙ 설정</span></h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/50-admin-menu.png" alt="그룹장 설정 메뉴"><figcaption>설정 메뉴 목록</figcaption></figure>
+      <div>
+        <p>설정 탭을 열면 관리 메뉴 목록이 나옵니다. 각 항목을 누르면 해당 설정 화면으로 들어가고, 왼쪽 위 <span class="kbd">‹</span>로 목록으로 돌아옵니다.</p>
+        <ul>
+          <li><strong>당직근무 인원</strong> · <strong>편성 기준</strong> · <strong>유형별 순번표</strong></li>
+          <li><strong>휴일</strong> · <strong>훈련</strong> · <strong>룰</strong></li>
+          <li><strong>그룹 및 앱 설정</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-members">
+    <h3>6. 당직근무 인원</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/51-admin-members.png" alt="당직근무 인원 관리"><figcaption>인원 추가·역할 지정</figcaption></figure>
+      <div>
+        <p>그룹에 속한 근무 인원을 관리합니다.</p>
+        <ul>
+          <li>위쪽에서 <strong>역할을 고르고 이름을 입력한 뒤 <span class="kbd">+</span></strong>로 인원을 직접 추가합니다.</li>
+          <li>키코드로 들어온 가입 신청자는 승인하면 목록에 합류합니다.</li>
+          <li>각 인원의 <strong>역할(당직사령·당직부관·당직사관·위병사관 등)</strong>을 바꾸거나 <span class="kbd">삭제</span>할 수 있습니다. 단, 그룹장 본인은 삭제할 수 없습니다.</li>
+        </ul>
+        <div class="note">역할을 <strong>없음</strong>으로 두면 그 인원은 편성에서 자연히 제외됩니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-basis">
+    <h3>7. 편성 기준</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/52-admin-basis.png" alt="편성 기준 설정"><figcaption>역할 구성·2교대·근무 기준</figcaption></figure>
+      <div>
+        <p>매일 어떤 역할을 몇 명, 어떤 방식으로 편성할지 정하는 핵심 설정입니다.</p>
+        <ul>
+          <li><strong>역할 구성</strong> — 매일 편성할 역할을 체크하고, 필요하면 커스텀 역할을 추가합니다.</li>
+          <li><strong>2교대 유형</strong> — 평일·토요일·일요일별로 주간/야간 분리 편성을 켤 수 있습니다.</li>
+          <li><strong>근무 기준 적용 범위</strong> — 각 근무 슬롯을 어떤 순번표에 연결할지 지정합니다.</li>
+          <li><strong>순번/일정 초기화</strong> — 회전 위치와 캐시를 비워 새로 편성합니다.</li>
+        </ul>
+        <div class="note">역할·시프트처럼 편성에 영향을 주는 항목을 바꾸면 일정이 자동으로 다시 계산됩니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-rosters">
+    <h3>8. 유형별 순번표</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/53-admin-rosters.png" alt="유형별 순번표 관리"><figcaption>역할·유형별 순번 조정</figcaption></figure>
+      <div>
+        <p>역할(직책)과 근무유형(평일·휴일전·토요일·일요일)별로 <strong>누가 몇 번째로 근무하는지</strong> 순서를 정합니다.</p>
+        <ul>
+          <li>위쪽 탭에서 역할과 근무유형을 고릅니다.</li>
+          <li>각 인원의 <span class="kbd">↑ ↓</span> 버튼이나 번호 칸으로 순번을 옮깁니다. 여러 명을 체크해 한 번에 이동할 수도 있습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-holidays">
+    <h3>9. 휴일</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/54-admin-holidays.png" alt="휴일 설정"><figcaption>기본휴무일·추가휴무일</figcaption></figure>
+      <div>
+        <ul>
+          <li><strong>기본휴무일</strong> — <span class="kbd">대한민국 공휴일 자동 적용</span>을 켜면 2024~2030년 공휴일이 자동으로 휴일 처리됩니다.</li>
+          <li><strong>추가휴무일</strong> — 창설기념일처럼 부대 자체 휴일을 날짜·이름으로 직접 추가하거나 삭제합니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-trainings">
+    <h3>10. 훈련</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/55-admin-trainings.png" alt="훈련 기간 설정"><figcaption>훈련 기간 등록</figcaption></figure>
+      <div>
+        <p>훈련 기간을 <strong>시작일·종료일·훈련명</strong>으로 등록합니다. 등록된 기간에는 당직 편성이 생략됩니다. 목록에서 <span class="kbd">삭제</span>로 해제할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-rules">
+    <h3>11. 룰</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/56-admin-rules.png" alt="룰 설정"><figcaption>특정 날짜 편성 보정</figcaption></figure>
+      <div>
+        <p>특정 날짜의 편성을 예외적으로 보정하는 규칙입니다. <strong>적용 일자·내용·근무유형·변경 방식</strong>을 정해 <span class="kbd">룰 적용</span>을 누릅니다.</p>
+        <ul>
+          <li><strong>다음달 첫 근무자 당겨오기</strong> — 다음 달 첫 순번을 이 날로 당겨옵니다.</li>
+          <li><strong>바로 다음날 당겨오기</strong> — 다음날 근무자를 이 날로 당겨옵니다.</li>
+          <li><strong>뒤로 밀기</strong> — 이 날 근무자를 뒤로 미룹니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="admin-group">
+    <h3>12. 그룹 및 앱 설정</h3>
+    <div class="step">
+      <figure class="shot"><img src="./guide/img/57-admin-group.png" alt="그룹 및 앱 설정"><figcaption>위임·권한·키코드·가입 승인</figcaption></figure>
+      <div>
+        <ul>
+          <li><strong>그룹장 위임</strong> — 다른 인원에게 그룹장 권한을 넘깁니다.</li>
+          <li><strong>권한 및 알림</strong> — 그룹원의 변경·룰·승인 권한과 근무 알림 시각(전날·당일)을 조정합니다.</li>
+          <li><strong>그룹 키코드</strong> — 합류용 키코드를 복사하거나, 노출됐을 때 <span class="kbd">새 키</span>로 재발급합니다.</li>
+          <li><strong>가입 신청</strong> — 키코드로 들어온 신청을 <span class="kbd">승인</span>/<span class="kbd">거절</span>합니다.</li>
+          <li><strong>백엔드 상태</strong> — 서버 연결/오프라인 상태를 보여줍니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── FAQ ───────────────────────── -->
+  <section class="guide faq" id="faq">
+    <h3>자주 묻는 질문</h3>
+    <dl>
+      <dt>기기를 바꿨는데 데이터가 보이지 않아요.</dt>
+      <dd>나무키우기 탭에서 이메일 인증을 마친 계정이라면 같은 이메일로 로그인하면 그룹과 나무가 복구됩니다. 아직 키코드로만 가입했다면 그룹장에게 키코드를 받아 다시 합류하세요.</dd>
+      <dt>근무를 바꾸고 싶어요.</dt>
+      <dd>요청 → 변경요청에서 내 근무와 상대 근무를 골라 신청하면, 상대 승낙과 그룹장 승인을 거쳐 확정됩니다.</dd>
+      <dt>그룹장을 다른 사람으로 바꾸려면?</dt>
+      <dd>설정 → 그룹 및 앱 설정 → 그룹장 위임에서 대상을 골라 위임합니다.</dd>
+      <dt>알림이 오지 않아요.</dt>
+      <dd>내 정보 → 설정에서 ‘이 기기에서 알림 받기’가 켜져 있는지, 그리고 그룹장이 근무 알림을 켜 두었는지 확인하세요.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="./privacy-policy.html">개인정보처리방침</a>
+      <a href="./account-deletion.html">계정 및 데이터 삭제 안내</a>
+      <a href="./terms-and-rewards.html">서비스 이용약관 및 보상 유의사항</a>
+    </div>
+    <div>당직월력 · DUTY CALENDAR — 화면 속 데이터는 모두 가상 예시입니다. 최종 업데이트: 2026-06-25.</div>
+    <a class="top" href="#">↑ 맨 위로</a>
+  </footer>
+</main>
+</body>
+</html>
